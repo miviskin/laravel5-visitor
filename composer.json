@@ -1,0 +1,26 @@
+{
+    "name": "miviskin/laravel5-visitor",
+    "description": "Visitor",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "miviskin",
+            "email": "miviskin@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Miviskin\\Visitor\\": "src/Visitor/"
+        }
+    },
+    "require": {
+        "illuminate/http": "~5.0",
+        "illuminate/support": "~5.0"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "master"
+        }
+    }
+}

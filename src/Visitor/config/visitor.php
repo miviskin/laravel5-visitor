@@ -1,0 +1,86 @@
+<?php
+
+return [
+
+    'browser' => [
+
+        'name' => [
+            'WebTV'             => 'webtv',
+            'Internet Explorer' => 'MSIE|Trident|Edge',
+            'Pocket IE'         => 'mspie|pocket|IEMobile',
+            'MSN Browser'       => 'msnb',
+            'Facebook'          => 'FacebookExternalHit|FBIOS',
+            'Opera Mini'        => 'opera mini',
+            'Opera'             => 'opera|OPR',
+            'Firefox'           => 'Firefox',
+            'Chrome'            => 'Chrome|CriOS',
+            'OmniWeb'           => 'omniweb',
+            'Safari'            => 'Safari',
+            'Konqueror'         => 'Konqueror',
+            'Amaya'             => 'amaya',
+            'Lynx'              => 'lynx',
+            'Links'             => 'Links',
+            'IceCat'            => 'IceCat',
+            'Mozilla'           => 'mozilla',
+        ],
+
+        'robot' => [
+            'W3C Validator' => 'W3C-checklink|W3C_Validator|W3C-mobileOK',
+            'Google'        => 'googlebot|Gsa-crawler',
+            'Yandex'        => 'Yandex|YaDirectBot',
+            'ApacheBench'   => 'apachebench',
+            'AltaVista'     => 'AltaVista',
+            'Rambler'       => 'Rambler',
+            'MSNBot'        => 'msnbot',
+            'Yahoo'         => 'yahoo',
+            'Lycos'         => 'lycos',
+            'Aport'         => 'Aport',
+            'Bing'          => 'bingbot',
+            'Alexa'         => 'ia_archiver',
+            'MailRu'        => 'Mail[.]Ru',
+            'WebAlta'       => 'WebAlta',
+            'Baidu'         => 'Baiduspider',
+            'Other'         => 'bot|slurp|spider',
+        ],
+
+        'platform' => [
+            'Windows 10'    => 'windows nt 10.0',
+            'Windows 8.1'   => 'windows nt 6.3',
+            'Windows 8'     => 'windows nt 6.2',
+            'Windows 7'     => 'windows nt 6.1',
+            'Windows Vista' => 'windows nt 6.0',
+            'Windows 2003'  => 'windows nt 5.2',
+            'Windows XP'    => 'windows nt 5.1',
+            'Windows 2000'  => 'windows nt 5.0',
+            'Windows NT'    => 'windows nt 4.0|winnt',
+            'Windows 98'    => 'windows 98|win98',
+            'Windows 95'    => 'windows 95|win95',
+            'Windows Phone' => 'windows phone',
+            'Windows CE'    => 'mspie|pocket|IEMobile|windows ce',
+            'Windows'       => 'windows',
+            'Symbian'       => 'symbian',
+            'iOS'           => 'iPad|iPod|iPhone',
+            'Mac OS X'      => 'os x',
+            'Macintosh'     => 'mac|ppc',
+            'Android'       => 'android',
+            'Linux'         => 'linux|gnu',
+            'BlackBerry'    => 'BlackBerry',
+            'FreeBSD'       => 'FreeBSD',
+            'OpenBSD'       => 'OpenBSD',
+            'NetBSD'        => 'NetBSD',
+            'OpenSolaris'   => 'OpenSolaris',
+            'SunOS'         => 'SunOS',
+            'OS/2'          => 'OS/2',
+            'BeOS'          => 'BeOS',
+            'Debian'        => 'debian',
+            'Unix'          => 'unix',
+        ],
+
+        'device' => [
+            'Mobile'  => 'Mobile|Mobi|mini|iPad|iPhone|iPod|BlackBerry|mspie|pocket|phone|Nokia|Android',
+            'Desktop' => 'Desktop|(windows |win)(nt|95|98)|os x|mac|ppc|linux|gnu|BSD|OpenSolaris|SunOS|OS/2|BeOS|debian|unix',
+        ],
+
+    ],
+
+];
