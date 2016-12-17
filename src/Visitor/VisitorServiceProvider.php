@@ -2,7 +2,6 @@
 
 namespace Miviskin\Visitor;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\ServiceProvider;
 
 class VisitorServiceProvider extends ServiceProvider
@@ -35,17 +34,17 @@ class VisitorServiceProvider extends ServiceProvider
     {
         $this->app->singleton('visitor.browser', function($app) {
             return new Browser(
-                $app['request']->server('HTTP_USER_AGENT'),
+                $app['request']->server->get('HTTP_USER_AGENT'),
                 $app['config']->get('visitor.browser')
             );
         });
 
         $this->app->singleton('visitor.referer', function ($app) {
-            return new URL($app['request']->server('HTTP_USER_AGENT'));
+            return new URL($app['request']->server->get('HTTP_REFERER'));
         });
 
         $this->app->singleton('visitor.url', function ($app) {
-            /** @var Request $request */
+            /** @var \Symfony\Component\HttpFoundation\Request $request */
             $request = $app['request'];
 
             if (null !== $queryString = $request->getQueryString()) {
@@ -58,7 +57,7 @@ class VisitorServiceProvider extends ServiceProvider
         });
 
         $this->app->singleton('visitor.ip', function ($app) {
-            return new IP($app['request']->server('REMOTE_ADDR'));
+            return new IP($app['request']->server->get('REMOTE_ADDR'));
         });
 
         $this->app->singleton('visitor', function ($app) {

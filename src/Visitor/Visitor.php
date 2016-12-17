@@ -148,9 +148,7 @@ class Visitor implements VisitorInterface
      */
     public function getRobot()
     {
-        return $this->isRobot()
-            ? $this->browser->robot
-            : $this->browser->name;
+        return $this->browser->robot;
     }
 
     /**

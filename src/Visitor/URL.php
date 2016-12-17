@@ -157,7 +157,7 @@ class URL implements URLInterface
      */
     public function isValid()
     {
-        return $this->source === $this->url;
+        return $this->source === (string)$this->url;
     }
 
     /**

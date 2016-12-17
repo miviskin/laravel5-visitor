@@ -50,7 +50,7 @@ class Browser implements BrowserInterface
     public function __construct($userAgent, array $rules)
     {
         foreach ($rules as $property => $rules) {
-            $this->$property = $this->findFirstMatch($agent, $rules);
+            $this->$property = $this->findFirstMatch($userAgent, $rules);
         }
 
         $this->userAgent = $userAgent;
@@ -68,7 +68,7 @@ class Browser implements BrowserInterface
     {
         if (strlen($string)) {
             foreach ($rules as $name => $regexp) {
-                if (preg_match("/{$regexp}/i", $string)) {
+                if (preg_match('/' . addcslashes($regexp, '/') . '/i', $string)) {
                     return $name;
                 }
             }
