@@ -2,7 +2,7 @@
 
 namespace Miviskin\Visitor;
 
-use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Request;
 
 class Visitor implements VisitorInterface
 {
@@ -194,7 +194,7 @@ class Visitor implements VisitorInterface
             $ip = (string)$this->ip;
 
             foreach ($this->proxyHeaders as $key) {
-                $proxy = $this->request->server($key);
+                $proxy = $this->request->server->get($key);
 
                 if ($proxy && $proxy !== $ip) {
                     return true;
