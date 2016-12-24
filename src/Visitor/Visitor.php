@@ -4,6 +4,21 @@ namespace Miviskin\Visitor;
 
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * Class Visitor
+ *
+ * @package Miviskin\Visitor
+ *
+ * @property-read Request          $request
+ * @property-read BrowserInterface $browser
+ * @property-read URLInterface     $referer
+ * @property-read URLInterface     $requestUrl
+ * @property-read IPInterface      $ip
+ * @property-read array            $proxyHeaders
+ * @property-read string           $platform
+ * @property-read string           $device
+ * @property-read string           $robot
+ */
 class Visitor implements VisitorInterface
 {
     use PropertyReadableTrait;
@@ -189,12 +204,9 @@ class Visitor implements VisitorInterface
     public function usesProxy()
     {
         if ($this->ip->isValid()) {
-            $ip = (string)$this->ip;
-
-            foreach ($this->proxyHeaders as $key) {
-                $proxy = $this->request->server->get($key);
-
-                if ($proxy && $proxy !== $ip) {
+            foreach ($this->proxyHeaders as $header) {
+                $proxy = $this->request->server->get($header);
+                if ($proxy && $proxy !== $this->ip->value) {
                     return true;
                 }
             }
