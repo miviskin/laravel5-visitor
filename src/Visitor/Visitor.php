@@ -30,11 +30,11 @@ class Visitor implements VisitorInterface
     protected $referer;
 
     /**
-     * URL  instance.
+     * URL instance.
      *
      * @var URLInterface
      */
-    protected $url;
+    protected $requestUrl;
 
     /**
      * IP instance.
@@ -71,14 +71,14 @@ class Visitor implements VisitorInterface
         Request $request,
         BrowserInterface $browser,
         URLInterface $referer,
-        URLInterface $url,
+        URLInterface $requestUrl,
         IPInterface $ip
     ) {
-        $this->request = $request;
-        $this->browser = $browser;
-        $this->referer = $referer;
-        $this->url     = $url;
-        $this->ip      = $ip;
+        $this->request    = $request;
+        $this->browser    = $browser;
+        $this->referer    = $referer;
+        $this->requestUrl = $requestUrl;
+        $this->ip         = $ip;
     }
 
     /**
@@ -106,9 +106,9 @@ class Visitor implements VisitorInterface
      *
      * @return URLInterface
      */
-    public function getUrl()
+    public function getRequestUrl()
     {
-        return $this->url;
+        return $this->requestUrl;
     }
 
     /**

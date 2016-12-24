@@ -43,7 +43,7 @@ class VisitorServiceProvider extends ServiceProvider
             return new URL($app['request']->server->get('HTTP_REFERER'));
         });
 
-        $this->app->singleton('visitor.url', function ($app) {
+        $this->app->singleton('visitor.request_url', function ($app) {
             /** @var \Symfony\Component\HttpFoundation\Request $request */
             $request = $app['request'];
 
@@ -65,7 +65,7 @@ class VisitorServiceProvider extends ServiceProvider
                 $app['request'],
                 $app['visitor.browser'],
                 $app['visitor.referer'],
-                $app['visitor.url'],
+                $app['visitor.request_url'],
                 $app['visitor.ip']
             );
         });
@@ -83,7 +83,7 @@ class VisitorServiceProvider extends ServiceProvider
         return [
             'visitor.browser',
             'visitor.referer',
-            'visitor.url',
+            'visitor.request_url',
             'visitor.ip',
             'visitor',
         ];
