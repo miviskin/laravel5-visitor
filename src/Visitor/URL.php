@@ -2,6 +2,26 @@
 
 namespace Miviskin\Visitor;
 
+/**
+ * Class URL.
+ *
+ * @package Miviskin\Visitor
+ *
+ * @property-read string $source
+ * @property-read string $url
+ * @property-read string $scheme
+ * @property-read string $authority
+ * @property-read string $userinfo
+ * @property-read string $username
+ * @property-read string $password
+ * @property-read string $host
+ * @property-read string $domain
+ * @property-read string $port
+ * @property-read string $uri
+ * @property-read string $path
+ * @property-read string $query
+ * @property-read string $fragment
+ */
 class URL implements URLInterface
 {
     use PropertyReadableTrait;
@@ -151,13 +171,23 @@ class URL implements URLInterface
     }
 
     /**
+     * Determine if url is empty.
+     *
+     * @return bool
+     */
+    public function isEmpty()
+    {
+        return $this->source === '';
+    }
+
+    /**
      * Determine if url is valid.
      *
      * @return bool
      */
     public function isValid()
     {
-        return $this->source === (string)$this->url;
+        return $this->isEmpty() || $this->source === $this->url;
     }
 
     /**
