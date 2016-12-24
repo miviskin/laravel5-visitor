@@ -23,7 +23,7 @@ interface VisitorInterface
      *
      * @return URLInterface
      */
-    public function getUrl();
+    public function getRequestUrl();
 
     /**
      * Get visitor IP.
