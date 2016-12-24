@@ -5,6 +5,13 @@ namespace Miviskin\Visitor;
 interface URLInterface
 {
     /**
+     * Determine if url is empty.
+     *
+     * @return bool
+     */
+    public function isEmpty();
+
+    /**
      * Determine if url is valid.
      *
      * @return bool
