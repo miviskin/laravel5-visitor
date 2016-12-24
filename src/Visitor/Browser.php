@@ -2,9 +2,27 @@
 
 namespace Miviskin\Visitor;
 
+/**
+ * Class Browser
+ *
+ * @package Miviskin\Visitor
+ *
+ * @property-read string $userAgent
+ * @property-read string $platform
+ * @property-read string $device
+ * @property-read string $robot
+ * @property-read string $name
+ */
 class Browser implements BrowserInterface
 {
     use PropertyReadableTrait;
+
+    /**
+     * Browser user agent.
+     *
+     * @var string
+     */
+    protected $userAgent;
 
     /**
      * Uses platform.
@@ -19,13 +37,6 @@ class Browser implements BrowserInterface
      * @var string
      */
     protected $device;
-
-    /**
-     * Browser user agent.
-     *
-     * @var string
-     */
-    protected $userAgent;
 
     /**
      * Robot name.
@@ -54,6 +65,19 @@ class Browser implements BrowserInterface
         }
 
         $this->userAgent = $userAgent;
+    }
+
+    /**
+     * Create new Browser instance.
+     *
+     * @param string $userAgent
+     * @param array  $rules
+     *
+     * @return static
+     */
+    public static function create($userAgent, array $rules)
+    {
+        return new static($userAgent, $rules);
     }
 
     /**
@@ -122,6 +146,6 @@ class Browser implements BrowserInterface
      */
     public function __toString()
     {
-        return $this->name !== null ? $this->name : 'Unknown';
+        return $this->name ?: 'Unknown';
     }
 }

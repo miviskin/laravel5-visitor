@@ -141,6 +141,18 @@ class URL implements URLInterface
     }
 
     /**
+     * Create new URL instance.
+     *
+     * @param string $url
+     *
+     * @return static
+     */
+    public static function create($url)
+    {
+        return new static($url);
+    }
+
+    /**
      * Get url regexp pattern.
      *
      * @return string
