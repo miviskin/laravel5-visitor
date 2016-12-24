@@ -2,16 +2,17 @@
 
 namespace Miviskin\Visitor;
 
+/**
+ * Class IP
+ *
+ * @package Miviskin\Visitor
+ *
+ * @property-read int    $version
+ * @property-read string $value
+ */
 class IP implements IPInterface
 {
     use PropertyReadableTrait;
-
-    /**
-     * IP value.
-     *
-     * @var string
-     */
-    protected $ip;
 
     /**
      * IP version.
@@ -21,6 +22,13 @@ class IP implements IPInterface
     protected $version;
 
     /**
+     * IP value.
+     *
+     * @var string
+     */
+    protected $value;
+
+    /**
      * IP constructor.
      *
      * @param string $ip
@@ -28,12 +36,24 @@ class IP implements IPInterface
     public function __construct($ip)
     {
         if (preg_match(static::getIPv4Pattern(), $ip = trim($ip))) {
-            $this->ip      = $ip;
             $this->version = 4;
+            $this->value   = $ip;
         } else if (preg_match(static::getIPv6Pattern(), $ip)) {
-            $this->ip      = $ip;
             $this->version = 6;
+            $this->value   = $ip;
         }
+    }
+
+    /**
+     * Create new IP instance.
+     *
+     * @param string $ip
+     *
+     * @return static
+     */
+    public static function create($ip)
+    {
+        return new static($ip);
     }
 
     /**
@@ -80,7 +100,27 @@ class IP implements IPInterface
      */
     public function isValid()
     {
-        return $this->ip !== null;
+        return $this->value !== null;
+    }
+
+    /**
+     * Determine if IP is local.
+     *
+     * @return bool
+     */
+    public function isLocal()
+    {
+        return (bool)preg_match('~^(::|127[.])~', $this->value);
+    }
+
+    /**
+     * Determine if IP is internal.
+     *
+     * @return bool
+     */
+    public function isInternal()
+    {
+        return $this->isLocal() || !filter_var($this->value, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE);
     }
 
     /**
@@ -90,6 +130,6 @@ class IP implements IPInterface
      */
     public function __toString()
     {
-        return (string)$this->ip;
+        return (string)$this->value;
     }
 }

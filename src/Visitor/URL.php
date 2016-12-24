@@ -3,7 +3,7 @@
 namespace Miviskin\Visitor;
 
 /**
- * Class URL.
+ * Class URL
  *
  * @package Miviskin\Visitor
  *

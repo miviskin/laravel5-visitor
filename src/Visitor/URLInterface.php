@@ -24,4 +24,11 @@ interface URLInterface
      * @return bool
      */
     public function isReal();
+
+    /**
+     * Convert to string representation.
+     *
+     * @return string
+     */
+    public function __toString();
 }
